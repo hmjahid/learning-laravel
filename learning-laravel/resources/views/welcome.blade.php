@@ -10,5 +10,5 @@
     <h1>Welcome to my laravel journey!</h1>
 
 </body>
-</html>
+</html> 
 
