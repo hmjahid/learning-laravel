@@ -30,3 +30,7 @@ Route::get('/service/{type?}', function(string $type = null) {
 Route::get('/course/{id}', function(string $id) {
     return "The course id is=$id";
 })->whereNumber('id');
+
+Route::get('/search/{search}', function(string $search) {
+    return $search;
+})->where('serach', '.+');
