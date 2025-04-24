@@ -49,10 +49,13 @@ Route::get('/p/{lang}/course/{id}', function(string $id) {
 })->name('product.view');
 
 
+
 Route::get('/user/profile', function () {
 
 })->name('profile');
 
+
+// Redirecting
 
 Route::get('/current-user', function() {
 
@@ -64,12 +67,16 @@ Route::get('/current-user', function() {
 });
 
 
+// Prefix Group
+
 Route::prefix('admin')->group(function() {
     Route::get('users', function () {
         return '/admin/users';
     });
 });
 
+
+// Name Group
 
 Route::name('admin')->group(function() {
     Route::get('/users', function () {
@@ -78,6 +85,7 @@ Route::name('admin')->group(function() {
 });
 
 
+// Fallback
 
 Route::fallback(function() {
     // return "Fallback";
@@ -93,7 +101,14 @@ Route::get('/{pararr1}/test/{pararr2}', function ( float $pararr1, float $pararr
 })->whereNumber(['a', 'b']);
 
 
+//  Controller
+
+Route::get('/test', [testController::class, 'index']);
 
 
+// Group Routes By Controller
 
-Route::get('test', [testController::class, 'index']);
+Route::controller(testController::class)->group(function(){
+    Route::get('/test', 'index');
+    Route::get('/test2', 'index2');
+});
