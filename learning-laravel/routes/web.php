@@ -75,3 +75,10 @@ Route::name('admin')->group(function() {
         return '/users'; // BUt the route name is "admin.users"
     })->name('users');
 });
+
+
+
+Route::fallback(function() {
+    // return "Fallback";
+    return view('404');
+});
