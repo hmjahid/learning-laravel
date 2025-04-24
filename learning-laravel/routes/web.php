@@ -82,3 +82,12 @@ Route::fallback(function() {
     // return "Fallback";
     return view('404');
 });
+
+
+
+
+// Test / exercise
+
+Route::get('/{pararr1}/test/{pararr2}', function ( float $pararr1, float $pararr2 ) {
+    return $pararr1 + $pararr2;
+})->whereNumber(['a', 'b']);
