@@ -22,6 +22,8 @@ Route::get('/', function () {
 //     return view('about');
 // });
 
+// Route::view( '/about', 'about');
+
 Route::view( '/about-us', 'about')->name('about');
 
 Route::get('/contact/{name}', function ( string $name) {
@@ -50,11 +52,26 @@ Route::get('/user/profile', function () {
 
 })->name('profile');
 
+
 Route::get('/current-user', function() {
 
  return redirect()->route('profile');
 
  return to_route('profile');
- 
+
 //  both metghods can be used
+});
+
+
+Route::prefix('admin')->group(function() {
+    Route::get('users', function () {
+        return '/admin/users';
+    });
+});
+
+
+Route::name('admin')->group(function() {
+    Route::get('/users', function () {
+        return '/users'; // BUt the route name is "admin.users"
+    })->name('users');
 });
