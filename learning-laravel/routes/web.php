@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\testController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -85,9 +86,14 @@ Route::fallback(function() {
 
 
 
-
 // Test / exercise
 
 Route::get('/{pararr1}/test/{pararr2}', function ( float $pararr1, float $pararr2 ) {
     return $pararr1 + $pararr2;
 })->whereNumber(['a', 'b']);
+
+
+
+
+
+Route::get('test', [testController::class, 'index']);
