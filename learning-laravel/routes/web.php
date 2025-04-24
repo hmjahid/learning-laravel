@@ -7,6 +7,9 @@ Route::get('/', function () {
         'name' => 'John Doe', 'age' => 30, 'email' => 'john@example.com'
     ];
 
+    $aboupageurl = route('about');
+    dd($aboupageurl);
+
     // dump($person);
     // dd($person); 
     return view('welcome');
@@ -16,7 +19,7 @@ Route::get('/', function () {
 //     return view('about');
 // });
 
-Route::view( '/about', 'about');
+Route::view( '/about-us', 'about')->name('about');
 
 Route::get('/contact/{name}', function ( string $name) {
     return "My name is =$name";
