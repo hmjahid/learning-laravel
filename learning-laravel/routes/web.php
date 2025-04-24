@@ -7,8 +7,11 @@ Route::get('/', function () {
         'name' => 'John Doe', 'age' => 30, 'email' => 'john@example.com'
     ];
 
-    $aboupageurl = route('about');
-    dd($aboupageurl);
+    // $aboupageurl = route('about');
+    // dd($aboupageurl);
+
+    $producturl = route('product.view', ['lang' => 'en', 'id' => 1]);
+    dd($producturl);
 
     // dump($person);
     // dd($person); 
@@ -37,3 +40,21 @@ Route::get('/course/{id}', function(string $id) {
 Route::get('/search/{search}', function(string $search) {
     return $search;
 })->where('serach', '.+');
+
+Route::get('/p/{lang}/course/{id}', function(string $id) {
+    return "The course id is=$id";
+})->name('product.view');
+
+
+Route::get('/user/profile', function () {
+
+})->name('profile');
+
+Route::get('/current-user', function() {
+
+ return redirect()->route('profile');
+
+ return to_route('profile');
+ 
+//  both metghods can be used
+});
