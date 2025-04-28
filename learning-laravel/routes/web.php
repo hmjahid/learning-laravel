@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ApiResourceTestController;
+use App\Http\Controllers\ResourceTestController;
 use App\Http\Controllers\ShowTestController;
 use App\Http\Controllers\testController;
 use Illuminate\Support\Facades\Route;
@@ -117,6 +119,28 @@ Route::get('/{pararr1}/test/{pararr2}', function ( float $pararr1, float $pararr
 
 // Route::get('/test', ShowTestController::class);
 
+
+// Single Action Controllers
+
 Route::get('/test/invoke', TestController::class);
 
 Route::get('/test', [TestController::class, 'index']);
+
+
+// Resource Controllers
+
+// Route::resource('/resoources', ResourceTestController::class);
+
+// Route::resource('/resoources', ResourceTestController::class)->except('destroy');
+
+// Route::resource('/resoources', ResourceTestController::class)->only('edit');
+
+// Route::apiResource('/resoources', ResourceTestController::class);
+
+// Route::apiResource('/apiresoources', ApiResourceTestController::class);
+
+
+Route::apiResources([
+    'resources' => ApiResourceTestController::class, 
+    'apiresources' => ResourceTestController::class
+]);
