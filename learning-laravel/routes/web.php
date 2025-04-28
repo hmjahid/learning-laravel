@@ -2,26 +2,27 @@
 
 use App\Http\Controllers\ApiResourceTestController;
 use App\Http\Controllers\exerciseController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ResourceTestController;
 use App\Http\Controllers\ShowTestController;
 use App\Http\Controllers\testController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    $person = [
-        'name' => 'John Doe', 'age' => 30, 'email' => 'john@example.com'
-    ];
+// Route::get('/', function () {
+//     $person = [
+//         'name' => 'John Doe', 'age' => 30, 'email' => 'john@example.com'
+//     ];
 
-    // $aboupageurl = route('about');
-    // dd($aboupageurl);
+//     // $aboupageurl = route('about');
+//     // dd($aboupageurl);
 
-    $producturl = route('product.view', ['lang' => 'en', 'id' => 1]);
-    dd($producturl);
+//     $producturl = route('product.view', ['lang' => 'en', 'id' => 1]);
+//     dd($producturl);
 
-    // dump($person);
-    // dd($person); 
-    return view('welcome');
-});
+//     // dump($person);
+//     // dd($person); 
+//     return view('welcome');
+// });
 
 // Route::get('/about', function () {
 //     return view('about');
@@ -152,3 +153,10 @@ Route::apiResources([
 Route::get('/sum/{num1}/{num2}', [exerciseController::class, 'sum'])->whereNumber(['num1', 'num2']);
 
 Route::get('/subtract/{num1}/{num2}', [exerciseController::class, 'subtract'])->whereNumber(['num1', 'num2']);
+
+
+
+
+// Home Controller
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
