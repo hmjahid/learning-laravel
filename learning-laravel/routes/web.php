@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApiResourceTestController;
+use App\Http\Controllers\exerciseController;
 use App\Http\Controllers\ResourceTestController;
 use App\Http\Controllers\ShowTestController;
 use App\Http\Controllers\testController;
@@ -144,3 +145,10 @@ Route::apiResources([
     'resources' => ApiResourceTestController::class, 
     'apiresources' => ResourceTestController::class
 ]);
+
+
+//  Controller Exercise
+
+Route::get('/sum/{num1}/{num2}', [exerciseController::class, 'sum'])->whereNumber(['num1', 'num2']);
+
+Route::get('/subtract/{num1}/{num2}', [exerciseController::class, 'subtract'])->whereNumber(['num1', 'num2']);
