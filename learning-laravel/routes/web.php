@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ShowTestController;
 use App\Http\Controllers\testController;
 use Illuminate\Support\Facades\Route;
 
@@ -103,12 +104,19 @@ Route::get('/{pararr1}/test/{pararr2}', function ( float $pararr1, float $pararr
 
 //  Controller
 
-Route::get('/test', [testController::class, 'index']);
+// Route::get('/test', [testController::class, 'index']);
 
 
 // Group Routes By Controller
 
-Route::controller(testController::class)->group(function(){
-    Route::get('/test', 'index');
-    Route::get('/test2', 'index2');
-});
+// Route::controller(testController::class)->group(function(){
+//     Route::get('/test', 'index');
+//     Route::get('/test2', 'index2');
+// });
+
+
+// Route::get('/test', ShowTestController::class);
+
+Route::get('/test/invoke', TestController::class);
+
+Route::get('/test', [TestController::class, 'index']);
